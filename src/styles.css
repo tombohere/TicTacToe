@@ -1,0 +1,71 @@
+.App {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tictactoe-game {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90vh;
+  width: 90vh;
+  box-sizing: border-box;
+}
+
+.tictactoe-container {
+  display: grid;
+  grid-template-columns: 22fr 1fr 22fr 1fr 22fr;
+  grid-template-rows: 22fr 1fr 22fr 1fr 22fr;
+  height: 100%;
+  width: 100%;
+}
+
+.tictactoe-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 500px;
+  user-select: none;
+}
+
+.tictactoe-square:hover {
+  background-color: rgb(233, 228, 221);
+}
+
+.tictactoe-square-text {
+  font-size: 25vh;
+  display: inline-block;
+  color: rgb(73, 73, 73);
+}
+
+.tictactoe-blank {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.win-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 25vh;
+  -webkit-text-stroke: 2px black;
+  color: white;
+  line-height: 28vh;
+  padding-top: 16vh;
+  background-color: rgba(65, 65, 65, 0.89);
+  user-select: none;
+}
