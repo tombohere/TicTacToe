@@ -11,9 +11,6 @@ export default function App() {
 }
 
 const TicTacToe = () => {
-  //const [win, setWin] = useState({ win: false, char: '' });
-  // const [current, setCurrent] = useState('X');
-  //  const [board, setBoard] = useState('         ');
   const [game, setGame] = useState({
     win: false,
     char: '',
@@ -46,7 +43,6 @@ const TicTacToe = () => {
     let t = [...game.board];
     t[n] = game.current;
     let { win, char } = checkBoard(t);
-    console.log(win, char);
     setGame({
       win: win,
       char: char,
