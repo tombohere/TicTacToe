@@ -24,22 +24,22 @@ const TicTacToe = () => {
       var height = window.innerHeight;
       var t;
       if (width > height) {
-        t1[0].style.height = '90vh';
-        t1[0].style.width = '90vh';
+        t1[0].style.height = '95vh';
+        t1[0].style.width = '95vh';
         for (t of t2) t.style.fontSize = '25vh';
         t2[0].style.fontSize = '25vh';
         if (t3.length) {
           t3[0].style.fontSize = '28vh';
-          t3[0].style.lineHeight = '32vh';
+          t3[0].style.lineHeight = '33vh';
           t3[0].style.paddingTop = '16vh';
         }
       } else {
-        t1[0].style.height = '90vw';
-        t1[0].style.width = '90vw';
+        t1[0].style.height = '95vw';
+        t1[0].style.width = '95vw';
         for (t of t2) t.style.fontSize = '25vw';
         if (t3.length) {
           t3[0].style.fontSize = '28vw';
-          t3[0].style.lineHeight = '32vw';
+          t3[0].style.lineHeight = '33vw';
           t3[0].style.paddingTop = '16vw';
         }
       }
