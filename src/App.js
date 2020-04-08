@@ -11,12 +11,13 @@ export default function App() {
 }
 
 const TicTacToe = () => {
-  const [game, setGame] = useState({
+  const newGame = {
     win: false,
     char: '',
     current: 'X',
-    board: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  });
+    board: new Array(9).fill(' ')
+  };
+  const [game, setGame] = useState(newGame);
 
   useEffect(() => {
     function handleResize() {
@@ -39,7 +40,6 @@ const TicTacToe = () => {
   });
 
   const handleClick = n => {
-    if (game.board[n] !== ' ') return; // move already made
     let t = [...game.board];
     t[n] = game.current;
     let { win, char } = checkBoard(t);
@@ -69,12 +69,7 @@ const TicTacToe = () => {
   };
 
   const resetBoard = () => {
-    setGame({
-      win: false,
-      char: '',
-      current: 'X',
-      board: '         '
-    });
+    setGame(newGame);
   };
 
   const Blank = <div className="tictactoe-blank" />;
@@ -107,7 +102,10 @@ const TicTacToe = () => {
 
 const Square = ({ val, click }) => {
   return (
-    <div className="tictactoe-square" onClick={click}>
+    <div
+      className={'tictactoe-square' + (val === ' ' ? ' empty' : '')}
+      onClick={val === ' ' ? click : null}
+    >
       <div className="tictactoe-square-text">{val}</div>
     </div>
   );
