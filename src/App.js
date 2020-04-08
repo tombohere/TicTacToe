@@ -44,8 +44,8 @@ const TicTacToe = () => {
     t[n] = game.current;
     let { win, char } = checkBoard(t);
     setGame({
-      win: win,
-      char: char,
+      win,
+      char,
       current: game.current === 'X' ? 'O' : 'X',
       board: t
     });
