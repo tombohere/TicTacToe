@@ -17,31 +17,19 @@ const TicTacToe = () => {
   useEffect(() => {
     function handleResize() {
       // fit game to fill viewport
-      var t1 = document.getElementsByClassName('tictactoe-game');
+      var [t1] = document.getElementsByClassName('tictactoe-game');
       var t2 = document.getElementsByClassName('tictactoe-square-text');
-      var t3 = document.getElementsByClassName('win-box');
+      var [t3] = document.getElementsByClassName('win-box');
       var width = window.innerWidth;
       var height = window.innerHeight;
       var t;
-      if (width > height) {
-        t1[0].style.height = '95vh';
-        t1[0].style.width = '95vh';
-        for (t of t2) t.style.fontSize = '25vh';
-        t2[0].style.fontSize = '25vh';
-        if (t3.length) {
-          t3[0].style.fontSize = '28vh';
-          t3[0].style.lineHeight = '33vh';
-          t3[0].style.paddingTop = '16vh';
-        }
-      } else {
-        t1[0].style.height = '95vw';
-        t1[0].style.width = '95vw';
-        for (t of t2) t.style.fontSize = '25vw';
-        if (t3.length) {
-          t3[0].style.fontSize = '28vw';
-          t3[0].style.lineHeight = '33vw';
-          t3[0].style.paddingTop = '16vw';
-        }
+      var m = width > height ? 'vh' : 'vw';
+      t1.style.height = t1.style.width = '95' + m;
+      for (t of t2) t.style.fontSize = '25' + m;
+      if (t3) {
+        t3.style.fontSize = '28' + m;
+        t3.style.lineHeight = '33' + m;
+        t3.style.paddingTop = '16' + m;
       }
     }
     handleResize();
@@ -55,7 +43,7 @@ const TicTacToe = () => {
     t = t.join('');
     setCurrent(current === 'X' ? 'O' : 'X');
     setBoard(t);
-    setTimeout(() => checkBoard(t), 100);
+    checkBoard(t);
   };
 
   const checkBoard = s => {
