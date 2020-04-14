@@ -39,7 +39,7 @@ const TicTacToe = () => {
     window.addEventListener('resize', handleResize);
   });
 
-  const handleClick = n => {
+  const setBoard = n => {
     let t = [...game.board];
     t[n] = game.current;
     let { win, char } = checkBoard(t);
@@ -49,6 +49,11 @@ const TicTacToe = () => {
       current: game.current === 'X' ? 'O' : 'X',
       board: t
     });
+  };
+
+  const handleClick = e => {
+    let n = e.target.getAttribute('i');
+    if (!e.target.innerText) setBoard(n);
   };
 
   const checkBoard = s => {
@@ -76,36 +81,33 @@ const TicTacToe = () => {
 
   return (
     <div className="tictactoe-game">
-      <div className="tictactoe-container">
-        <Square val={game.board[0]} click={n => handleClick(0)} />
+      <div className="tictactoe-container" onClick={handleClick}>
+        <Square val={game.board[0]} i={0} />
         {Blank}
-        <Square val={game.board[1]} click={n => handleClick(1)} />
+        <Square val={game.board[1]} i={1} />
         {Blank}
-        <Square val={game.board[2]} click={n => handleClick(2)} />
+        <Square val={game.board[2]} i={2} />
         {_.times(5, () => Blank)}
-        <Square val={game.board[3]} click={n => handleClick(3)} />
+        <Square val={game.board[3]} i={3} />
         {Blank}
-        <Square val={game.board[4]} click={n => handleClick(4)} />
+        <Square val={game.board[4]} i={4} />
         {Blank}
-        <Square val={game.board[5]} click={n => handleClick(5)} />
+        <Square val={game.board[5]} i={5} />
         {_.times(5, () => Blank)}
-        <Square val={game.board[6]} click={n => handleClick(6)} />
+        <Square val={game.board[6]} i={6} />
         {Blank}
-        <Square val={game.board[7]} click={n => handleClick(7)} />
+        <Square val={game.board[7]} i={7} />
         {Blank}
-        <Square val={game.board[8]} click={n => handleClick(8)} />
+        <Square val={game.board[8]} i={8} />
       </div>
       {game.win ? <Win char={game.char} reset={resetBoard} /> : ''}
     </div>
   );
 };
 
-const Square = ({ val, click }) => {
+const Square = ({ val, click, i }) => {
   return (
-    <div
-      className={'tictactoe-square' + (val === ' ' ? ' empty' : '')}
-      onClick={val === ' ' ? click : null}
-    >
+    <div className={'tictactoe-square' + (val === ' ' ? ' empty' : '')} i={i}>
       <div className="tictactoe-square-text">{val}</div>
     </div>
   );
